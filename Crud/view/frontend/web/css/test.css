@@ -1,0 +1,9 @@
+table,tr,th{
+    border:1px solid;
+}
+
+h2{
+    color: rgba(103, 42, 201, 0.2);
+    font-size: 77px;
+    text-align: center;
+}

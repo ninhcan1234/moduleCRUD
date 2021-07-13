@@ -1,0 +1,25 @@
+<?php
+    $title = $block->getTitle();
+    $object = $block->getInform();
+    $id = $object['product_id'];
+    $name = $object['product_name'];
+    $des = $object['description'];
+?>
+<h2><?=$title;?></h2>
+<form method="post" action="<?=$block->getSaveBase();?>" style="margin-top: 100px;">
+    <fieldset style="margin: 0 auto; width: 50%">
+        <div>
+            <label for="product_id"><?= __("ID") ?></label>
+            <input type="text" readonly name="product_id" value="<?=$id;?>" style="background-color: gray;" >
+        </div>
+        <div>
+            <label for="product_name"><?= __("PRODUCT'S NAME") ?></label>
+                <input type="text" name="product_name" value="<?=$name;?>" />
+        </div>
+        <div>
+            <label for="description"><?= __("DESCRIPTION") ?></label>
+                <input type="text" name="description" value="<?=$des;?>" />
+        </div>
+        <input style="margin-left:50%; transform:translateX(-50%)" type="submit" name="btn" value="Save"  />
+    </fieldset>
+</form>
