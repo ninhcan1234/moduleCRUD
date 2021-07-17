@@ -1,4 +1,5 @@
 <?php
+
 namespace AHT\Eav\Controller\Action;
 
 class Delete extends \Magento\Framework\App\Action\Action
@@ -13,13 +14,12 @@ class Delete extends \Magento\Framework\App\Action\Action
      * @param \Magento\Framework\App\Action\Context $context
      */
     public function __construct(
-       \Magento\Framework\App\Action\Context $context,
-       \Magento\Framework\View\Result\PageFactory $pageFactory,
-       \AHT\Eav\Api\ProductRepositoryInterface $productResource
-    )
-    {
-        $this->_pageFactory = $pageFactory;
+        \Magento\Framework\App\Action\Context $context,
+        \Magento\Framework\View\Result\PageFactory $pageFactory,
+        \AHT\Eav\Api\ProductRepositoryInterface $productResource
+    ) {
         $this->_productResource = $productResource;
+        $this->_pageFactory = $pageFactory;
         return parent::__construct($context);
     }
     /**
@@ -27,10 +27,12 @@ class Delete extends \Magento\Framework\App\Action\Action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
+   
+
     public function execute()
     {
         $param = $this->getRequest()->getParam('id');
-        $id = substr($param,0,-1);
+        $id = substr($param, 0, -1);
         $this->_productResource->deleteById($id);
 
         $reDirect = $this->resultRedirectFactory->create();

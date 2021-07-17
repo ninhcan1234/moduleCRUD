@@ -1,4 +1,5 @@
 <?php
+
 namespace AHT\Eav\Model\ResourceModel;
 
 use \AHT\Eav\Api\ProductRepositoryInterface;
@@ -14,18 +15,25 @@ class ProductRepository implements ProductRepositoryInterface
     public function __construct(
         \AHT\Eav\Model\ResourceModel\Product $productResource,
         \AHT\Eav\Model\ProductFactory $productFactory
-    )
-    {
+    ) {
         $this->productResource = $productResource;
         $this->productFactory = $productFactory;
     }
 
-    public function save(ProductInterface $product){
+    public function load(ProductInterface $product, $value, $field = null)
+    {
+        $this->productResource->load($product, $value, $field = null);
+        return $product;
+    }
+
+    public function save(ProductInterface $product)
+    {
         $this->productResource->save($product);
         return $product;
     }
 
-    public function delete(ProductInterface $product){
+    public function delete(ProductInterface $product)
+    {
         $this->productResource->delete($product);
         return true;
     }
@@ -33,16 +41,15 @@ class ProductRepository implements ProductRepositoryInterface
     public function getById($id)
     {
         $product = $this->productFactory->create();
-        $product->load($id);
+        $this->productResource->load($product, $id);
         if (!$product->getId()) {
             throw new NoSuchEntityException(__('The Product with the "%1" ID doesn\'t exist.', $id));
         }
         return $product;
     }
 
-    public function deleteById($id){
+    public function deleteById($id)
+    {
         $this->productResource->delete($this->getById($id));
     }
-
-    
 }

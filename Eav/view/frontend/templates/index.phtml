@@ -1,10 +1,10 @@
 <?php
-$tittle = $block->getTittle();
+$title = $block->getTitle();
 $products = $block->getAll();
 ?>
 
-<?php if (count($products) > 0): ?>
-    <h2><?=$tittle;?></h2>
+<?php if (count($products) > 0) : ?>
+    <h2><?= $title; ?></h2>
     <table class="abc" border="1">
         <tr>
             <th><?= __("ID") ?></th>
@@ -14,14 +14,14 @@ $products = $block->getAll();
             <th><?= __("UPDATE_AT") ?></th>
             <th><?= __("ACTION") ?></th>
         </tr>
-        <?php foreach ($products as $product): ?>
+        <?php foreach ($products as $product) : ?>
             <tr>
                 <td><?= $product->getProduct_id() ?></td>
                 <td><?= $product->getProduct_name() ?></td>
                 <td><?= $product->getDescription() ?></td>
                 <td><?= $product->getCreate_at() ?></td>
                 <td><?= $product->getUpdate_at() ?></td>
-                <td><a href="<?= $block->getEditBase($product->getProduct_id())?>">Edit </a><a href="<?= $block->getDeleteBase($product->getProduct_id())?>">Delete</a></td>
+                <td><a href="<?= $block->getEditBase($product->getProduct_id()) ?>">Edit </a><a href="<?= $block->getDeleteBase($product->getProduct_id()) ?>">Delete</a></td>
             </tr>
         <?php endforeach; ?>
     </table>
@@ -31,11 +31,11 @@ $products = $block->getAll();
     <fieldset style="margin: 0 auto; width: 50%">
         <div>
             <label for="product_name"><?= __("PRODUCT'S NAME") ?></label>
-                <input type="text" name="product_name"/>
+            <input type="text" name="product_name" />
         </div>
         <div>
             <label for="description"><?= __("DESCRIPTION") ?></label>
-                <input type="text" name="description"/>
+            <input type="text" name="description" />
         </div>
         <input type="submit" style="margin-left:50%; transform:translateX(-50%)" value="<?= __("Add Product") ?>" />
     </fieldset>

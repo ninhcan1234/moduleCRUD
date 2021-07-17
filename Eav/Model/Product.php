@@ -15,7 +15,11 @@ class Product extends AbstractModel implements \AHT\Eav\Api\Data\ProductInterfac
         $this->_init(ResourceModel\Product::class);
     }
 
-
+    /*Action for model
+    *
+    *@param referece interface
+    *
+    */
     public function getId(){
         return $this->getData(self::PRODUCT_ID);
     }
